@@ -1,85 +1,65 @@
- DATA = {
+DATA = {
     "ALPHABET": {
-        "1. Conduzione e Uso": {
-            "articolo": "Art. 4 e Art. 6 (Uso del Veicolo)",
-            "spiegazione": "Il veicolo può essere guidato dal Cliente, dai conviventi e dai dipendenti. Vietato sub-noleggio, gare e trasporto merci pericolose.",
-            "azione": "Se il conducente non è autorizzato, Alphabet può rivalersi sul cliente per l'intero danno."
-        },
-        "2. Sinistri (24 Ore)": {
+        "Sinistri e Danni (24h)": {
             "articolo": "Art. 8.2 (Denuncia Sinistro)",
-            "spiegazione": "Denuncia OBBLIGATORIA entro 24 ORE. Ritardo o omissione comporta una penale di € 150,00. I danni non denunciati trovati a fine noleggio vengono addebitati al 100%.",
-            "azione": "Segnalare subito la penale di 150€ se sono passate più di 24 ore dall'evento."
+            "spiegazione": "La denuncia deve essere inviata entro 24 ORE. In caso di ritardo o omissione, Alphabet applica una penale fissa di € 150,00. Se un danno non denunciato viene trovato alla riconsegna, il cliente paga l'intero ripristino professionale (non la franchigia).",
+            "azione": "Controllare subito l'orario del sinistro. Se sono passate più di 24 ore, avvisare il cliente dell'addebito automatico di 150€."
         },
-        "3. Manutenzione": {
-            "articolo": "Art. 8.1",
-            "spiegazione": "Obbligo centri convenzionati. Emergenze fuori rete: rimborso max € 150,00 + IVA solo se autorizzati preventivamente.",
-            "azione": "Indirizzare il cliente alla rete ufficiale tramite App Alphabet."
+        "Smarrimento Documenti": {
+            "articolo": "Art. 9.1 (Dotazioni Veicolo)",
+            "spiegazione": "Lo smarrimento del libretto di circolazione comporta un onere amministrativo fisso di € 100,00 + IVA. Per le chiavi, viene addebitato il costo del duplicato più le spese di gestione pratica.",
+            "azione": "In caso di smarrimento libretto, informare il cliente che riceverà fattura separata di 100€ + IVA."
         },
-        "4. Auto Irreparabile": {
-            "articolo": "Art. 13",
-            "spiegazione": "In caso di danno totale, il contratto si risolve. Il cliente paga la franchigia e i canoni fino alla data del sinistro.",
-            "azione": "Pratica di chiusura contratto immediata."
+        "Manutenzione Urgente": {
+            "articolo": "Art. 8.1 (Manutenzione)",
+            "spiegazione": "Obbligo di riparazione presso centri Alphabet. Intervalli di manutenzione tassativi. Riparazioni d'urgenza fuori rete: rimborso max € 150,00 previa autorizzazione scritta.",
+            "azione": "Negare rimborsi per lavori fatti privatamente senza autorizzazione preventiva."
         },
-        "5. Furto": {
-            "articolo": "Art. 8.3",
-            "spiegazione": "Denuncia immediata e consegna delle DUE chiavi. Se mancano le chiavi per colpa, decade ogni limitazione di responsabilità.",
-            "azione": "Verificare la presenza di entrambe le chiavi originali."
-        },
-        "6. Multe e Oneri": {
-            "articolo": "Scheda Economica",
-            "spiegazione": "Gestione multe: € 7,50 + IVA. Smarrimento libretto: € 100,00 + IVA. Smarrimento chiavi: costo vivo + gestione.",
-            "azione": "Avvisare dell'addebito amministrativo in fattura."
+        "Auto Irreparabile": {
+            "articolo": "Art. 13 (Danno Totale)",
+            "spiegazione": "Se il veicolo è dichiarato antieconomico, il contratto si risolve. Il cliente paga la franchigia e i canoni fino alla data del sinistro.",
+            "azione": "Avviare pratica di chiusura contratto e sospensione RID."
         }
     },
     "LEASYS": {
-        "1. Irreparabilità con Colpa": {
-            "articolo": "Art. 16.4",
-            "spiegazione": "Se l'auto è distrutta con colpa, il cliente paga: Penale Estinzione + 2 canoni + eventuale valore a nuovo (se <6 mesi).",
-            "azione": "Avvisare il cliente che l'addebito sarà molto elevato (migliaia di euro)."
+        "Auto Irreparabile (Penale Massima)": {
+            "articolo": "Art. 16.4 (Danno Totale con Responsabilità)",
+            "spiegazione": "Se l'auto è distrutta con colpa, Leasys addebita: Penale di Estinzione Anticipata + 2 canoni di locazione + eventuale valore a nuovo (se l'auto ha <6 mesi).",
+            "azione": "Fondamentale: avvisare il cliente che l'esborso economico sarà di diverse migliaia di euro."
         },
-        "2. Sinistri (48 Ore)": {
+        "Furto e Chiavi": {
+            "articolo": "Art. 15 (Furto)",
+            "spiegazione": "Il cliente deve consegnare ENTRAMBE le chiavi originali entro 48 ore dal furto. Se ne manca anche solo una senza precedente denuncia di smarrimento, il cliente paga l'INTERO valore del veicolo.",
+            "azione": "Recuperare subito entrambe le chiavi dal cliente e verificare che siano le originali."
+        },
+        "Denuncia Sinistro (48h)": {
             "articolo": "Art. 14",
-            "spiegazione": "Denuncia entro 48 ORE con modulo CAI completo. Senza denuncia, Leasys addebita l'intero danno e il lucro cessante (fermo tecnico).",
-            "azione": "Controllare che il CAI sia firmato da entrambe le parti."
-        },
-        "3. Furto": {
-            "articolo": "Art. 15",
-            "spiegazione": "Consegna di ENTRAMBE le chiavi entro 48h. Se ne manca una, il cliente paga l'intero valore del veicolo.",
-            "azione": "Recuperare subito le chiavi dal cliente."
-        },
-        "4. Recesso Anticipato": {
-            "articolo": "Art. 19",
-            "spiegazione": "Penale fissa del 35% dei canoni residui più ricalcolo chilometrico.",
-            "azione": "Richiedere conteggio ufficiale a Leasys via portale."
+            "spiegazione": "Termine di 48 ORE per la denuncia. Obbligatorio il modulo CAI firmato. In mancanza, Leasys addebita l'intero danno e il lucro cessante (fermo tecnico).",
+            "azione": "Controllare la firma della controparte sul CAI. Senza firma, il sinistro è considerato con colpa."
         }
     },
     "ARVAL": {
-        "1. Sinistri e CAI": {
-            "articolo": "Art. 11",
-            "spiegazione": "Denuncia entro 48h. Senza CAI o denuncia autorità, Arval può addebitare il 100% del danno.",
-            "azione": "Insistere per avere il modulo CAI firmato correttamente."
+        "Sinistri e CAI": {
+            "articolo": "Art. 11 (Sinistri)",
+            "spiegazione": "Denuncia entro 48 ore. Senza CAI firmato o denuncia autorità, Arval ha il diritto di addebitare il 100% del danno al cliente.",
+            "azione": "Insistere sulla compilazione corretta del CAI per evitare addebiti totali."
         },
-        "2. Manutenzione e Gomme": {
-            "articolo": "Art. 9 e 10",
-            "spiegazione": "Obbligo centri Arval. Gomme sostituite solo al limite legale (1.6mm) o per stagionalità.",
-            "azione": "Prenotare tramite MyArval o numero verde."
-        },
-        "3. Riconsegna": {
-            "articolo": "Art. 14",
-            "spiegazione": "L'auto deve rispettare il 'Manuale dello Stato d'Uso'. Danni extra-usura vengono fatturati a listino.",
-            "azione": "Consigliare perizia pro-attiva prima della restituzione."
+        "Pneumatici": {
+            "articolo": "Art. 10 (Gomme)",
+            "spiegazione": "Sostituzione solo al limite legale (1.6mm) o per stagionalità. Danni accidentali (forature) sono spesso a carico del cliente se non specificato in offerta.",
+            "azione": "Verificare sulla scheda d'ordine il numero di treni gomme inclusi."
         }
     },
-    "AYVENS": {
-        "1. Spese Apertura Pratica": {
-            "articolo": "Art. 11",
-            "spiegazione": "Ogni sinistro comporta un addebito fisso di € 150,00 + IVA per gestione amministrativa.",
-            "azione": "Avvisare che i 150€ si aggiungono alla franchigia."
+    "SANTANDER": {
+        "Riconsegna e Pulizia": {
+            "articolo": "Art. 21 (Riconsegna)",
+            "spiegazione": "Il veicolo deve essere restituito pulito. Se sporco, il perito chiude il verbale 'con riserva', impedendo ogni contestazione sui danni trovati dopo.",
+            "azione": "Consigliare vivamente un lavaggio completo prima della perizia."
         },
-        "2. Esonero Responsabilità": {
-            "articolo": "Art. 11.2",
-            "spiegazione": "La protezione decade in caso di guida in stato di ebbrezza, dolo o conducente non autorizzato.",
-            "azione": "Verificare verbale autorità in caso di incidente grave."
+        "Denuncia via PEC": {
+            "articolo": "Art. 14 (Sinistri)",
+            "spiegazione": "La denuncia deve essere inviata via PEC o Raccomandata entro 48 ore. La telefonata non ha valore legale.",
+            "azione": "Fornire l'indirizzo PEC di Santander al cliente per l'invio immediato."
         }
     }
 }
