@@ -1,45 +1,81 @@
- DATA = {
+DATA = {
     "ARVAL": {
-        "Privati (B2C)": {
-            "Art. 14: Diritto di Ripensamento": {
-                "articolo": "Art. 14 (Codice del Consumo)",
-                "spiegazione": "Il cliente ha 14 giorni dalla firma per recedere senza penali se il contratto è stato firmato fuori dai locali commerciali o online.",
-                "azione": "Verificare la data di firma e il luogo. Se sono passati meno di 14gg, il cliente può annullare tutto con una PEC."
+        "Aziende (B2B)": {
+            "Art. 1-2: Oggetto e Modalità": {
+                "articolo": "Art. 1 e 2",
+                "spiegazione": "Definisce il noleggio come locazione di veicolo nuovo con servizi inclusi. Arval può variare il canone se tra ordine e consegna passano >90gg causa listini costruttore.",
+                "azione": "Se il cliente contesta l'aumento canone alla consegna, citare l'Art. 2.2 (variazione listini)."
+            },
+            "Art. 4: Consegna e Danni": {
+                "articolo": "Art. 4",
+                "spiegazione": "L'auto deve essere controllata alla consegna. Danni non rilevati sul verbale vanno segnalati entro 24 ore o i primi 100km.",
+                "azione": "Non accettare contestazioni danni dopo 24 ore dalla consegna se non indicate nel verbale."
+            },
+            "Art. 6-7: Assicurazioni e Danni": {
+                "articolo": "Art. 6 e 7",
+                "spiegazione": "RCA inclusa. La limitazione di responsabilità (Kasko/Furto) decade totalmente in caso di dolo o colpa grave del conducente.",
+                "azione": "In caso di sinistro per guida in stato di ebbrezza, Arval riaddebiterà l'intero valore del veicolo."
+            },
+            "Art. 8-10: Manutenzione e Sostitutiva": {
+                "articolo": "Art. 8, 9, 10",
+                "spiegazione": "Manutenzione solo in Arval Center. L'auto sostitutiva spetta solo se inclusa nell'ordine e per fermi >8h lavorative.",
+                "azione": "Verificare il flag 'Veicolo Sostitutivo' nell'offerta prima di confermare il servizio al cliente."
+            },
+            "Art. 14: Recesso Anticipato": {
+                "articolo": "Art. 14",
+                "spiegazione": "Penale standard 35% dei canoni residui + conguaglio chilometrico pro-rata.",
+                "azione": "Inviare richiesta scritta a Arval per conteggio preciso (non fare stime manuali)."
+            },
+            "Art. 16: Restituzione": {
+                "articolo": "Art. 16",
+                "spiegazione": "Restituzione con 2 chiavi e documenti. Danni fuori norma (Manuale Stato d'Uso) sono fatturati al 100%.",
+                "azione": "Obbligatorio lavaggio interno/esterno prima della riconsegna o scatta il verbale con riserva."
             },
             "Art. 25: Foro Competente": {
-                "articolo": "Art. 25 (Foro del Consumatore)",
-                "spiegazione": "A differenza del B2B, per i privati la competenza è del Foro di residenza o domicilio del Cliente. Non può essere imposta Firenze.",
-                "azione": "In caso di contestazione legale, la pratica va gestita presso il tribunale della città del cliente."
-            },
-            "Recesso dopo 14gg": {
-                "articolo": "Art. 14.2",
-                "spiegazione": "Dopo i 14gg, il recesso anticipato per i privati segue tabelle di deprezzamento specifiche, spesso più favorevoli del 35% aziendale.",
-                "azione": "Consultare la 'Tabella Parametrica' allegata al contratto B2C specifico."
+                "articolo": "Art. 25.1",
+                "spiegazione": "Per qualsiasi controversia su interpretazione o esecuzione del contratto, il foro esclusivo è FIRENZE.",
+                "azione": "Rispondere legalmente che ogni causa deve essere incardinata presso il Tribunale di Firenze."
             }
         },
-        "Aziende (B2B)": {
-            "Art. 1-4: Oggetto e Consegna": {
-                "articolo": "Art. 1, 2, 3, 4",
-                "spiegazione": "Regola la locazione di veicoli nuovi. Arval può variare il canone se tra ordine e consegna passano >90gg causa listini costruttore.",
-                "azione": "Se il cliente si lamenta dell'aumento canone alla consegna, citare l'Art. 2.2 (ritardi del produttore)."
+        "Privati (B2C)": {
+            "Art. 14: Diritto di Ripensamento": {
+                "articolo": "Art. 52 Codice Consumo",
+                "spiegazione": "Il privato ha 14 giorni per recedere senza penali dalla firma se il contratto è avvenuto a distanza (online/telefono).",
+                "azione": "Se la firma è recente (<14gg), il cliente può annullare tutto via PEC senza costi."
             },
-            "Art. 7-10: Danni e Sostitutiva": {
-                "articolo": "Art. 7 (Responsabilità) e 10 (Sostitutiva)",
-                "spiegazione": "La responsabilità decade per colpa grave. L'auto sostitutiva spetta solo per fermi >8h lavorative se inclusa nell'ordine.",
-                "azione": "Se il fermo è di sole 4 ore, spiegare che da contratto non è dovuta l'auto sostitutiva."
-            },
-            "Art. 14-16: Fine Contratto": {
-                "articolo": "Art. 14 (Recesso) e 16 (Restituzione)",
-                "spiegazione": "Penale recesso: 35% canoni residui. Alla resa, i danni fuori norma sono fatturati al 100%.",
-                "azione": "Inviare il manuale 'Stato d'Uso' prima della riconsegna per prevenire contestazioni sui graffi."
-            },
-            "Art. 25: Foro Competente": {
-                "articolo": "Art. 25 (Foro Esclusivo)",
-                "spiegazione": "Per le aziende, l'unico foro competente è Firenze.",
-                "azione": "Risposta secca: 'Da contratto (Art. 25) ogni controversia è di competenza del Tribunale di Firenze'."
+            "Art. 25: Foro del Consumatore": {
+                "articolo": "Art. 66 bis Codice Consumo",
+                "spiegazione": "Il foro competente è inderogabilmente quello di residenza o domicilio del consumatore.",
+                "azione": "A differenza delle aziende, se un privato fa causa, dovrete andare nel tribunale della sua città."
             }
         }
     },
-    "ALPHABET": { "Privati (B2C)": {}, "Aziende (B2B)": {} },
-    "LEASYS": { "Privati (B2C)": {}, "Aziende (B2B)": {} }
+    "LEASYS": {
+        "Aziende (B2B)": {
+            "Art. 16.4: Irreparabilità": {
+                "articolo": "Art. 16.4",
+                "spiegazione": "Sinistro totale con colpa: Penale Estinzione + 2 Canoni + Valore a nuovo se auto < 6 mesi.",
+                "azione": "Spiegare al cliente che l'addebito per distruzione auto con colpa è pesantissimo."
+            },
+            "Art. 26: Foro Competente": {
+                "articolo": "Art. 26",
+                "spiegazione": "Il foro esclusivo per Leasys è Roma.",
+                "azione": "Indirizzare ogni contenzioso legale al tribunale di Roma."
+            }
+        }
+    },
+    "ALPHABET": {
+        "Aziende (B2B)": {
+            "Art. 8.2: Sinistri (24h)": {
+                "articolo": "Art. 8.2",
+                "spiegazione": "Denuncia tassativa entro 24 ore. Penale ritardo € 150,00.",
+                "azione": "Controllare l'ora del sinistro: se denunciato il giorno dopo, applicare la penale."
+            },
+            "Art. 16: Foro Competente": {
+                "articolo": "Art. 16",
+                "spiegazione": "Il foro esclusivo per Alphabet è Roma.",
+                "azione": "Competenza territoriale esclusiva: Roma."
+            }
+        }
+    }
 }
