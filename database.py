@@ -1,65 +1,73 @@
 DATA = {
     "ALPHABET": {
-        "Sinistri e Danni (24h)": {
-            "articolo": "Art. 8.2 (Denuncia Sinistro)",
-            "spiegazione": "La denuncia deve essere inviata entro 24 ORE. In caso di ritardo o omissione, Alphabet applica una penale fissa di € 150,00. Se un danno non denunciato viene trovato alla riconsegna, il cliente paga l'intero ripristino professionale (non la franchigia).",
-            "azione": "Controllare subito l'orario del sinistro. Se sono passate più di 24 ore, avvisare il cliente dell'addebito automatico di 150€."
+        "1. Circolazione all'Estero": {
+            "articolo": "Art. 4.2 (Ambito territoriale)",
+            "spiegazione": "Il veicolo può circolare nei paesi dell'Unione Europea e in quelli coperti dalla Carta Verde. Per i paesi extra-UE non indicati, è obbligatorio richiedere un'autorizzazione scritta ad Alphabet (costo pratica circa € 25,00 + IVA).",
+            "azione": "Controllare i paesi NON sbarrati sulla Carta Verde. Se il cliente deve andare in un paese sbarrato, deve inviare richiesta formale almeno 10 giorni prima."
         },
-        "Smarrimento Documenti": {
-            "articolo": "Art. 9.1 (Dotazioni Veicolo)",
-            "spiegazione": "Lo smarrimento del libretto di circolazione comporta un onere amministrativo fisso di € 100,00 + IVA. Per le chiavi, viene addebitato il costo del duplicato più le spese di gestione pratica.",
-            "azione": "In caso di smarrimento libretto, informare il cliente che riceverà fattura separata di 100€ + IVA."
+        "2. Conducenti Autorizzati": {
+            "articolo": "Art. 4.1 (Uso del veicolo)",
+            "spiegazione": "Guida consentita al Cliente, ai familiari conviventi e ai dipendenti/collaboratori. È vietata la guida a soggetti terzi senza delega. Vietato l'uso per gare, sub-noleggio o trasporto merci pericolose.",
+            "azione": "In caso di sinistro con guidatore non autorizzato, Alphabet applicherà il diritto di rivalsa integrale (il cliente paga tutto)."
         },
-        "Manutenzione Urgente": {
-            "articolo": "Art. 8.1 (Manutenzione)",
-            "spiegazione": "Obbligo di riparazione presso centri Alphabet. Intervalli di manutenzione tassativi. Riparazioni d'urgenza fuori rete: rimborso max € 150,00 previa autorizzazione scritta.",
-            "azione": "Negare rimborsi per lavori fatti privatamente senza autorizzazione preventiva."
+        "3. Sinistri e Danni (Termini)": {
+            "articolo": "Art. 8.2 (Obblighi in caso di sinistro)",
+            "spiegazione": "Denuncia entro 24 ORE dall'evento. La mancata denuncia o il ritardo comporta una penale di € 150,00. Se il danno non è denunciato ma trovato alla riconsegna, viene addebitato l'importo totale del ripristino.",
+            "azione": "Avvisare il cliente: la denuncia va fatta anche per danni isolati (es. graffio in sosta) per poter applicare la franchigia."
         },
-        "Auto Irreparabile": {
-            "articolo": "Art. 13 (Danno Totale)",
-            "spiegazione": "Se il veicolo è dichiarato antieconomico, il contratto si risolve. Il cliente paga la franchigia e i canoni fino alla data del sinistro.",
-            "azione": "Avviare pratica di chiusura contratto e sospensione RID."
+        "4. Manutenzione e Riparazioni": {
+            "articolo": "Art. 8.1",
+            "spiegazione": "Uso esclusivo della rete Alphabet. Intervalli di manutenzione obbligatori come da libretto. Piccole riparazioni urgenti fuori rete rimborsabili max € 150,00 solo se autorizzate.",
+            "azione": "Vietare interventi privati: Arval/Alphabet non rimborsano fatture di officine non convenzionate."
+        },
+        "5. Furto e Incendio": {
+            "articolo": "Art. 8.3",
+            "spiegazione": "Denuncia immediata e consegna delle DUE chiavi originali. Se il cliente non consegna entrambe le chiavi, la limitazione di responsabilità decade (addebito valore veicolo).",
+            "azione": "Verificare il possesso del duplicato. Se smarrito in precedenza, deve esserci una denuncia di smarrimento antecedente al furto."
+        },
+        "6. Oneri Amministrativi": {
+            "articolo": "Listino Oneri Alphabet",
+            "spiegazione": "Gestione Multe: € 7,50 + IVA. Smarrimento Libretto: € 100,00 + IVA. Smarrimento Chiavi: costo duplicato + gestione.",
+            "azione": "Informare il cliente che questi importi non sono stornabili in quanto costi vivi di gestione pratica."
         }
     },
     "LEASYS": {
-        "Auto Irreparabile (Penale Massima)": {
-            "articolo": "Art. 16.4 (Danno Totale con Responsabilità)",
-            "spiegazione": "Se l'auto è distrutta con colpa, Leasys addebita: Penale di Estinzione Anticipata + 2 canoni di locazione + eventuale valore a nuovo (se l'auto ha <6 mesi).",
-            "azione": "Fondamentale: avvisare il cliente che l'esborso economico sarà di diverse migliaia di euro."
+        "1. Circolazione all'Estero": {
+            "articolo": "Art. 6 (Uso del veicolo)",
+            "spiegazione": "Circolazione permessa nei paesi della UE e Carta Verde. È responsabilità del cliente verificare la validità della copertura assicurativa per lo specifico paese di destinazione.",
+            "azione": "Consigliare al cliente di portare sempre con sé l'originale della Carta Verde presente nel portadocumenti."
         },
-        "Furto e Chiavi": {
+        "2. Sinistro Grave (Irreparabile)": {
+            "articolo": "Art. 16.4 (Sinistro Totale)",
+            "spiegazione": "Se il veicolo è distrutto con colpa, il cliente deve pagare: Penale Estinzione Anticipata + 2 canoni di locazione + eventuale Valore a nuovo (se auto < 6 mesi).",
+            "azione": "NON rassicurare il cliente. Spiegare che l'entità dell'addebito verrà stabilita solo dopo la perizia tecnica."
+        },
+        "3. Furto e Chiavi": {
             "articolo": "Art. 15 (Furto)",
-            "spiegazione": "Il cliente deve consegnare ENTRAMBE le chiavi originali entro 48 ore dal furto. Se ne manca anche solo una senza precedente denuncia di smarrimento, il cliente paga l'INTERO valore del veicolo.",
-            "azione": "Recuperare subito entrambe le chiavi dal cliente e verificare che siano le originali."
+            "spiegazione": "Obbligo di restituzione di ENTRAMBE le chiavi originali entro 48 ore. La mancata consegna comporta l'addebito dell'intero valore commerciale dell'auto al momento del furto.",
+            "azione": "Chiedere subito: 'Ha entrambe le chiavi?'. La chiave smarrita va denunciata subito, non dopo il furto."
         },
-        "Denuncia Sinistro (48h)": {
-            "articolo": "Art. 14",
-            "spiegazione": "Termine di 48 ORE per la denuncia. Obbligatorio il modulo CAI firmato. In mancanza, Leasys addebita l'intero danno e il lucro cessante (fermo tecnico).",
-            "azione": "Controllare la firma della controparte sul CAI. Senza firma, il sinistro è considerato con colpa."
+        "4. Recesso Anticipato": {
+            "articolo": "Art. 19 (Risoluzione anticipata)",
+            "spiegazione": "Recesso possibile con 60gg di preavviso. Penale pari al 35% dei canoni residui + ricalcolo chilometrico (conguaglio tra km percorsi e km contrattualizzati pro-rata).",
+            "azione": "Inviare al cliente il modulo di richiesta conteggio estinzione."
         }
     },
     "ARVAL": {
-        "Sinistri e CAI": {
-            "articolo": "Art. 11 (Sinistri)",
-            "spiegazione": "Denuncia entro 48 ore. Senza CAI firmato o denuncia autorità, Arval ha il diritto di addebitare il 100% del danno al cliente.",
-            "azione": "Insistere sulla compilazione corretta del CAI per evitare addebiti totali."
+        "1. Viaggi all'Estero": {
+            "articolo": "Art. 4.3 (Territorialità)",
+            "spiegazione": "Il veicolo può circolare nei paesi UE e Carta Verde. Per i paesi extra-UE è necessario il certificato internazionale di assicurazione e delega Arval.",
+            "azione": "Verificare sul sito Arval se per il paese specifico è richiesta una delega notarile (es. Marocco, Turchia)."
         },
-        "Pneumatici": {
-            "articolo": "Art. 10 (Gomme)",
-            "spiegazione": "Sostituzione solo al limite legale (1.6mm) o per stagionalità. Danni accidentali (forature) sono spesso a carico del cliente se non specificato in offerta.",
-            "azione": "Verificare sulla scheda d'ordine il numero di treni gomme inclusi."
-        }
-    },
-    "SANTANDER": {
-        "Riconsegna e Pulizia": {
-            "articolo": "Art. 21 (Riconsegna)",
-            "spiegazione": "Il veicolo deve essere restituito pulito. Se sporco, il perito chiude il verbale 'con riserva', impedendo ogni contestazione sui danni trovati dopo.",
-            "azione": "Consigliare vivamente un lavaggio completo prima della perizia."
+        "2. Manutenzione Arval Center": {
+            "articolo": "Art. 9 (Manutenzione)",
+            "spiegazione": "Tutti i servizi devono essere eseguiti presso Arval Center. Il cliente è responsabile se non rispetta le scadenze dei tagliandi imposti dal costruttore.",
+            "azione": "Ricordare al cliente che il superamento dei km per il tagliando (oltre tolleranza) può causare addebiti per danni al motore."
         },
-        "Denuncia via PEC": {
-            "articolo": "Art. 14 (Sinistri)",
-            "spiegazione": "La denuncia deve essere inviata via PEC o Raccomandata entro 48 ore. La telefonata non ha valore legale.",
-            "azione": "Fornire l'indirizzo PEC di Santander al cliente per l'invio immediato."
+        "3. Riconsegna (Danni accettabili)": {
+            "articolo": "Art. 14 (Restituzione)",
+            "spiegazione": "Il veicolo deve essere reso in stato conforme all'usura normale. I danni fuori norma (graffi profondi, bolli, strappi sedili) sono fatturati al 100% secondo perizia professionale.",
+            "azione": "Inviare al cliente il 'Manuale dello Stato d'Uso Arval' per l'auto-valutazione prima del perito."
         }
     }
 }
