@@ -1,4 +1,4 @@
- import streamlit as st
+import streamlit as st
 from database import DATA
 
 st.set_page_config(page_title="SOS Noleggio - Database Integrale", layout="wide")
