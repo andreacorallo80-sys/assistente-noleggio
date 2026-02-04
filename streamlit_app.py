@@ -1,33 +1,40 @@
 import streamlit as st
 from database import DATA
 
-st.set_page_config(page_title="SOS Noleggio - Database Integrale", layout="wide")
+st.set_page_config(page_title="NLT Legal Advisor PRO", layout="wide")
 
-st.title("🛡️ Assistente Legale Contratti NLT")
-st.markdown("Consultazione ufficiale clausole contrattuali per Customer Care")
+st.title("⚖️ Consulente Legale NLT Professionale")
+st.markdown("Analisi comparativa B2B/B2C basata su Condizioni Generali di Contratto")
 
-# Sidebar di navigazione
+# Sidebar - Navigazione a 2 livelli
 with st.sidebar:
-    st.header("Seleziona Contratto")
-    societa = st.selectbox("Società di Noleggio:", list(DATA.keys()))
+    st.header("Filtri Ricerca")
+    societa = st.selectbox("NOLEGGIATORE:", list(DATA.keys()))
+    tipo = st.selectbox("TIPO CLIENTE:", list(DATA[societa].keys()))
     st.divider()
-    argomento = st.radio("Seleziona Clausola:", list(DATA[societa].keys()))
+    argomenti = sorted(list(DATA[societa][tipo].keys()))
+    if argomenti:
+        argomento = st.radio("SELEZIONA ARTICOLO/CASO:", argomenti)
+    else:
+        st.warning("Dati in fase di caricamento per questa categoria.")
+        st.stop()
 
-# Area Risultati
-res = DATA[societa][argomento]
+# Visualizzazione Risultati
+res = DATA[societa][tipo][argomento]
 
-st.subheader(f"Analisi: {argomento}")
+st.header(f"{societa} ({tipo})")
+st.subheader(argomento)
 st.divider()
 
-# Layout a due blocchi
-col1, col2 = st.columns([1, 1])
+col1, col2 = st.columns(2)
 
 with col1:
     st.error(f"📄 **RIFERIMENTO ARTICOLO:**\n\n{res['articolo']}")
-    st.info(f"📝 **SPIEGAZIONE LEGALE:**\n\n{res['spiegazione']}")
+    st.markdown("---")
+    st.markdown(f"### 🛡️ Interpretazione Legale:\n{res['spiegazione']}")
 
 with col2:
-    st.success(f"💡 **ISTRUZIONI PER LA COLLEGA (AZIONE):**\n\n{res['azione']}")
+    st.info(f"⚡ **AZIONE OPERATIVA UFFICIO:**\n\n{res['azione']}")
 
 st.divider()
-st.caption(f"Note: I dati per {societa} sono estratti dalle Condizioni Generali di Locazione aggiornate 2026.")
+st.caption("Strumento professionale. Le risposte per i Privati tengono conto del D.Lgs 206/2005 (Codice del Consumo).")
