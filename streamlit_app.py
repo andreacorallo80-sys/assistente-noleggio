@@ -15,10 +15,10 @@ st.divider()
 # Layout a due colonne
 col1, col2 = st.columns([1, 1])
 with col1:
-    st.error(f"🔍 **RIFERIMENTO CONTRATTUALE:**\n\n{res['articolo']}")
-    st.write("")
-    st.markdown(f"### 💬 COSA DIRE AL CLIENTE:\n{res['spiegazione']}")
+st.error(f"🔍 **RIFERIMENTO CONTRATTUALE:**\n\n{res['articolo']}")
+st.write("")
+st.markdown(f"### 💬 COSA DIRE AL CLIENTE:\n{res['spiegazione']}")
 with col2:
-    st.info(f"⚡ **AZIONE IMMEDIATA COLLEGA:**\n\n{res['azione']}")
+st.info(f"⚡ **AZIONE IMMEDIATA COLLEGA:**\n\n{res['azione']}")
 st.divider()
 st.caption("Documentazione interna aggiornata. Estratto dalle Condizioni Generali di Locazione ufficiali.")
