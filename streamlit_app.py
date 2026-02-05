@@ -1,59 +1,58 @@
 import streamlit as st
 from database import DATA
 
-st.set_page_config(page_title="AI NLT Advisor PRO", layout="centered")
+st.set_page_config(page_title="AI Advisor Noleggio", layout="wide")
 
-st.title("🤖 AI Assistente Contratti NLT")
-st.markdown("Chiedi aiuto per gestire i clienti e le clausole delle società di noleggio.")
+# Pulizia spazio iniziale per evitare IndentationError
+st.markdown("""<style>div.block-container{padding-top:2rem;}</style>""", unsafe_allow_html=True)
+
+st.title("⚖️ Assistente Operativo Contratti NLT")
+st.markdown("Analisi discorsiva e ragionata per la gestione del cliente")
 
 # Selezione Contesto
 col1, col2 = st.columns(2)
 with col1:
     soc = st.selectbox("Società del contratto:", sorted(list(DATA.keys())))
 with col2:
-    tipo = st.selectbox("Tipo cliente:", sorted(list(DATA[soc].keys())))
+    st.info(f"📍 **Focus:** {DATA[soc]['identita']} ({DATA[soc]['tipo']})")
 
-# Input discorsivo (Ragionamento AI)
-domanda = st.text_input("Cosa ti chiede il cliente? (es: 'Può andare in Svizzera?' o 'Chi paga i danni?')")
+# Chat/Domanda
+domanda = st.text_input("Fai una domanda (es: 'Cosa paga per un incidente?' o 'Il foro competente?')")
 
 if domanda:
     q = domanda.lower()
     st.divider()
     
     # Motore di interpretazione concettuale
-    mappa = {
-        "estero": "estero", "viagg": "estero", "paesi": "estero", "svizzera": "estero",
-        "incidente": "sinistri", "sinistro": "sinistri", "cai": "sinistri", "danni": "sinistri",
-        "prezz": "prezzi", "canone": "prezzi", "ritard": "prezzi",
-        "tagliand": "manutenzione", "officina": "manutenzione", "olio": "manutenzione",
-        "recedere": "recesso", "chiudere": "recesso", "penale": "recesso",
-        "avvocato": "foro", "tribunale": "foro", "causa": "foro", "legal": "foro",
-        "sostitutiva": "sostitutiva", "cortesia": "sostitutiva",
-        "restituire": "restituzione", "consegnare": "restituzione", "chiavi": "restituzione"
+    mappa_intenti = {
+        "incidente": ["incidente", "sinistro", "botto", "paga", "torto", "danni", "kasko", "rca"],
+        "estero": ["estero", "svizzera", "viaggio", "fuori", "francia", "germania", "carta verde"],
+        "foro": ["foro", "tribunale", "causa", "avvocato", "competente", "legale"],
+        "recesso": ["recedere", "chiudere", "penale", "ripensamento", "disdetta", "estinguere"],
+        "manutenzione": ["olio", "tagliando", "meccanico", "rottura", "officina", "motore"]
     }
 
-    categoria = None
-    for parola, cat in mappa.items():
-        if parola in q:
-            categoria = cat
+    intento_trovato = None
+    for intento, parole in mappa_intenti.items():
+        if any(p in q for p in parole):
+            intento_trovato = intento
             break
 
-    # Visualizzazione Risposta Discorsiva
-    regole = DATA[soc][tipo]["regole"]
-    
-    if categoria and categoria in regole:
-        info = regole[categoria]
+    if intento_trovato and intento_trovato in DATA[soc]["concetti"]:
+        res = DATA[soc]["concetti"][intento_trovato]
+        
         with st.chat_message("assistant"):
-            st.markdown(f"### 🧐 Analisi per la Collega")
-            st.write(f"In merito alla tua domanda su **{soc}**, la risposta si trova nell'**Articolo {info['art']}**.")
+            st.markdown(f"### 🧐 Ragionamento per la Collega")
+            st.write(f"In base al contratto **{soc}**, questa situazione è regolata dall'**Articolo {res['art']}**.")
             
             st.markdown("---")
-            st.write(f"**Cosa dice il contratto:** {info['testo']}")
+            st.write(f"**Logica tecnica:** {res['logica']}")
+            st.warning(f"**Risposta al caso specifico:** {res['risposta']}")
             
-            st.markdown("### 🗣️ Cosa rispondere al cliente")
-            st.success(info['ragionamento'])
+            st.markdown("### 🗣️ Suggerimento pratico (Cosa dire al cliente)")
+            st.success(res['consiglio'])
     else:
-        st.warning("Capisco la domanda, ma non trovo una clausola specifica. Prova a usare parole come 'sinistro', 'estero', 'recesso' o 'foro'.")
+        st.warning("Capisco la domanda, ma non trovo una clausola specifica. Prova a usare parole più dirette (es: 'incidente', 'estero', 'foro', 'recesso').")
 
 st.divider()
-st.caption("Aggiornato 2026. Basato su CGC Arval B2B (Art. 1-25) e Standard Alphabet/Leasys.")
+st.caption("Strumento professionale basato su CGC 2026. Rispetta la riservatezza delle informazioni.")
