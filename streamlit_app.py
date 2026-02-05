@@ -24,11 +24,11 @@ if domanda:
     mappa = {
         "estero": "estero", "viagg": "estero", "paesi": "estero", "svizzera": "estero",
         "incidente": "sinistri", "sinistro": "sinistri", "cai": "sinistri", "danni": "sinistri",
-        "prezz": "canone_var", "canone": "canone_var", "ritard": "canone_var",
+        "prezz": "prezzi", "canone": "prezzi", "ritard": "prezzi",
         "tagliand": "manutenzione", "officina": "manutenzione", "olio": "manutenzione",
         "recedere": "recesso", "chiudere": "recesso", "penale": "recesso",
         "avvocato": "foro", "tribunale": "foro", "causa": "foro", "legal": "foro",
-        "sostitutiva": "auto_sostitutiva", "cortesia": "auto_sostitutiva",
+        "sostitutiva": "sostitutiva", "cortesia": "sostitutiva",
         "restituire": "restituzione", "consegnare": "restituzione", "chiavi": "restituzione"
     }
 
