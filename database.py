@@ -1,41 +1,64 @@
 DATA = {
     "ARVAL": {
-        "Aziende (B2B)": {
-            "regole": {
-                "oggetto": {"art": "1", "testo": "Locazione veicoli nuovi + RCA + Manutenzione + Soccorso.", "ragionamento": "Il contratto copre il mezzo e i servizi base. Attenzione: AdBlue e liquidi sono esclusi (Art. 12)."},
-                "prezzi": {"art": "2.2", "testo": "Arval può variare il canone se passano >90gg tra ordine e consegna.", "ragionamento": "Se la fabbrica ritarda oltre 3 mesi, Arval ha il diritto legale di aggiornare il canone ai nuovi listini."},
-                "consegna": {"art": "4", "testo": "Danni segnalabili entro 24h o 100km.", "ragionamento": "Oltre le 24 ore dalla consegna, ogni danno estetico è a carico del cliente. Sii ferma su questo."},
-                "bollo": {"art": "5", "testo": "Pagamento a carico di Arval.", "ragionamento": "Il cliente non deve preoccuparsi del bollo, Arval lo gestisce centralmente."},
-                "sinistri": {"art": "6, 7 e 11", "testo": "RCA inclusa. Denuncia entro 48h. Obbligo CAI firmato.", "ragionamento": "Senza firma della controparte o verbale, Arval addebita il 100% del danno per colpa presunta (Art. 11)."},
-                "manutenzione": {"art": "8", "testo": "Solo Arval Center. Obbligo controllo livelli olio/liquidi.", "ragionamento": "Il cliente risponde dei danni da incuria. Se fonde il motore perché non ha guardato l'olio, paga tutto lui."},
-                "sostitutiva": {"art": "10", "testo": "Solo per fermi > 8h lavorative e se prevista nell'ordine.", "ragionamento": "Per i tagliandi rapidi l'auto non è dovuta. Verifica sempre il flag nell'offerta originale."},
-                "estero": {"art": "18.1", "testo": "UE e Carta Verde ok. Extra-UE serve delega scritta.", "ragionamento": "Se il paese è sbarrato sulla carta verde, il cliente rischia il sequestro se non ha l'autorizzazione di Arval."},
-                "recesso": {"art": "14", "testo": "Penale 35% canoni residui + conguaglio chilometrico.", "ragionamento": "Oltre alla penale, scatta il ricalcolo dei km: se ne ha fatti troppi, il conguaglio sarà pesantissimo."},
-                "foro": {"art": "25", "testo": "Competenza esclusiva del Foro di Firenze.", "ragionamento": "Usa questo per fermare gli avvocati: ogni causa deve essere fatta a Firenze, non nella città del cliente."},
-                "restituzione": {"art": "16", "testo": "Resa con 2 chiavi e documenti. Danni fuori norma fatturati 100%.", "ragionamento": "Se mancano le chiavi o il libretto alla resa, Arval addebita i costi di ripristino a listino pieno."}
-            }
-        },
-        "Privati (B2C)": {
-            "regole": {
-                "ripensamento": {"art": "52 Cod. Consumo", "testo": "Diritto di recesso entro 14gg dalla firma.", "ragionamento": "Per i privati esiste il diritto di ripensamento se il contratto è fatto fuori sede o online."},
-                "foro": {"art": "66 bis", "testo": "Foro del Consumatore (residenza del cliente).", "ragionamento": "Con i privati non possiamo imporre Firenze. Dobbiamo gestire la causa nella loro città."}
+        "identita": "Arval - Gruppo BNP Paribas",
+        "tipo": "B2B (Aziende)",
+        "concetti": {
+            "incidente": {
+                "art": "6.1 e 7.1",
+                "logica": "In caso di sinistro con responsabilità (torto), il cliente non paga il danno reale ma le penali contrattuali fissate nell'ordine.",
+                "risposta": "Il cliente pagherà la **Penale RCA** (per i danni causati a terzi) e, qualora il veicolo Arval necessiti di riparazioni, anche la **Penale Kasko** (Limitazione di responsabilità Danni).",
+                "consiglio": "Dì al cliente: 'Se ha torto, pagherà solo le penali fisse previste: la RCA per la controparte e la Kasko per sistemare la sua auto. Se invece ha ragione e il CAI è completo e firmato, non pagherà nulla.'"
+            },
+            "estero": {
+                "art": "18.1",
+                "logica": "La circolazione è permessa nei paesi UE e in quelli coperti dalla Carta Verde (non sbarrati).",
+                "risposta": "È possibile guidare nei paesi UE, Svizzera, Regno Unito e quelli indicati sulla Carta Verde. Per paesi extra-UE sbarrati serve autorizzazione scritta.",
+                "consiglio": "Dì al cliente: 'Verifichi la Carta Verde: se il paese non è barrato può andare. Se è sbarrato, non parta senza la nostra delega o rischia il sequestro del mezzo e l'annullamento dell'assicurazione.'"
+            },
+            "foro": {
+                "art": "25",
+                "logica": "La clausola stabilisce la competenza territoriale esclusiva per le liti aziendali.",
+                "risposta": "Per ogni controversia riguardante il contratto B2B, il foro competente in via esclusiva è quello di **Firenze**.",
+                "consiglio": "Se l'avvocato del cliente minaccia causa, fagli presente che dovrà incardinarla a Firenze. Questo spesso basta a chiudere la contestazione per i costi di trasferta che dovrebbero sostenere."
+            },
+            "recesso": {
+                "art": "14",
+                "logica": "Il contratto può essere chiuso prima del tempo pagando un prezzo di recesso e ricalcolando i km.",
+                "risposta": "È previsto un preavviso di 60gg. Si paga una penale (solitamente il 35% dei canoni residui) più il conguaglio chilometrico pro-rata.",
+                "consiglio": "Avvisa il cliente: 'Oltre alla penale, se ha percorso più chilometri di quelli previsti nel periodo effettivo, Arval le addebiterà il conguaglio chilometrico. Il conto finale potrebbe essere alto.'"
+            },
+            "manutenzione": {
+                "art": "8",
+                "logica": "Obbligo di manutenzione presso la rete ufficiale e controllo diligente dei liquidi.",
+                "risposta": "Tutti gli interventi vanno fatti in Arval Center. Il cliente risponde dei danni causati da incuria (es. mancanza olio).",
+                "consiglio": "Se ha rotto il motore, chiedi se ha rispettato i tagliandi. Se è fuori soglia km, Arval gli addebiterà l'intera riparazione perché ha violato l'Art. 8."
             }
         }
     },
     "ALPHABET": {
-        "Aziende (B2B)": {
-            "regole": {
-                "sinistri": {"art": "8.2", "testo": "Denuncia entro 24 ORE. Penale ritardo € 150,00.", "ragionamento": "Alphabet è rigidissima sul tempo. Anche un'ora di ritardo fa scattare la penale di 150€."},
-                "foro": {"art": "16", "testo": "Foro esclusivo Roma.", "ragionamento": "La competenza legale è unicamente su Roma."}
-            }
+        "identita": "Alphabet - Gruppo BMW",
+        "tipo": "B2B",
+        "concetti": {
+            "incidente": {
+                "art": "8.2",
+                "logica": "Denuncia entro 24 ore. Penale RCA/Kasko standard + penale ritardo.",
+                "risposta": "Si applicano le penali RCA e Kasko previste. Attenzione: se la denuncia non arriva entro 24h, Alphabet applica una penale di 150€.",
+                "consiglio": "Dì al cliente: 'Denunci subito! Alphabet addebita 150€ di penale fissa anche solo per un'ora di ritardo nella segnalazione.'"
+            },
+            "foro": {"art": "16", "risposta": "Foro esclusivo Roma.", "consiglio": "La competenza legale per Alphabet è unicamente Roma."}
         }
     },
     "LEASYS": {
-        "Aziende (B2B)": {
-            "regole": {
-                "sinistro_totale": {"art": "16.4", "testo": "Penale estinzione + 2 canoni + valore a nuovo (se < 6 mesi).", "ragionamento": "In caso di distruzione auto con colpa, il conto sarà di svariate migliaia di euro."},
-                "foro": {"art": "26", "testo": "Foro esclusivo Roma.", "ragionamento": "Competenza territoriale: Roma."}
-            }
+        "identita": "Leasys - Stellantis",
+        "tipo": "B2B",
+        "concetti": {
+            "incidente": {
+                "art": "14",
+                "logica": "Denuncia entro 48h. Penale RCA e Kasko.",
+                "risposta": "Il cliente paga le penali RCA e Kasko se ha responsabilità.",
+                "consiglio": "Verifica sempre che il CAI sia firmato da entrambi, altrimenti Leasys addebita la Kasko intera al cliente."
+            },
+            "foro": {"art": "26", "risposta": "Foro esclusivo Roma.", "consiglio": "Ogni contenzioso legale con Leasys deve essere gestito a Roma."}
         }
     }
 }
