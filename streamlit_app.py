@@ -1,63 +1,48 @@
 import streamlit as st
 from database import DATA
 
-st.set_page_config(page_title="AI Assistant Noleggio", layout="centered")
+st.set_page_config(page_title="AI NLT Advisor", layout="centered")
 
-st.title("🤖 Assistente NLT Intelligente")
-st.markdown("Chiedi qualunque cosa sui contratti Arval, Alphabet, Leasys...")
+st.title("🤖 Il tuo Assistente Legale NLT")
+st.markdown("Fai una domanda come se parlassi a un collega esperto.")
 
-# Selezione della società per contestualizzare il ragionamento
-societa = st.selectbox("Su quale società stiamo lavorando?", list(DATA.keys()))
+# Selezione contesto
+col_a, col_b = st.columns(2)
+with col_a:
+    soc = st.selectbox("Società:", list(DATA.keys()))
+with col_b:
+    cat = st.selectbox("Tipo Cliente:", list(DATA[soc].keys()))
 
-# Input discorsivo
-domanda = st.text_input("Scrivi qui la tua domanda (es: 'Il cliente può andare all'estero?' o 'Chi paga i danni?')")
+# Domanda discorsiva
+domanda = st.text_input("Esempio: 'Cosa succede se fa un incidente?' o 'Può andare all'estero?'")
 
 if domanda:
+    q = domanda.lower()
     st.divider()
-    with st.spinner("Sto analizzando la documentazione..."):
-        # Logica di ragionamento AI (Keyword Matching evoluto)
-        testo_domanda = domanda.lower()
-        trovato = False
+    
+    # Motore di ragionamento (Mappatura Intenti)
+    intento = None
+    if any(x in q for x in ["estero", "viaggio", "fuori", "paesi"]): intento = "estero"
+    elif any(x in q for x in ["incidente", "sinistro", "cai", "botto", "danno"]): intento = "sinistri"
+    elif any(x in q for x in ["tagliando", "olio", "officina", "rottura"]): intento = "tagliando"
+    elif any(x in q for x in ["chiudere", "recesso", "ripensamento", "disdetta"]): intento = "recesso"
+    elif any(x in q for x in ["avvocato", "foro", "tribunale", "causa"]): intento = "foro"
+    elif any(x in q for x in ["distrutta", "totale", "rottamata"]): intento = "totale"
+    elif any(x in q for x in ["chiavi", "rubata", "furto"]): intento = "chiavi"
+    
+    if intento and intento in DATA[soc][cat]:
+        res = DATA[soc][cat][intento]
         
-        regole = DATA[societa]["regole"]
+        st.subheader("🧐 Analisi dell'Assistente")
+        st.write(f"Parliamo di **{soc} ({cat})**. La regola è dettata dall'**Articolo {res['art']}**.")
         
-        # Mappatura concettuale delle domande
-        mappa_concetti = {
-            "estero": "conduzione", "guidare": "conduzione", "chi guida": "conduzione",
-            "incidente": "sinistri", "botto": "sinistri", "danno": "sinistri", "cai": "sinistri",
-            "chiudere": "recesso", "recedere": "recesso", "penale": "recesso",
-            "officina": "riparazioni", "meccanico": "riparazioni", "olio": "riparazioni",
-            "avvocato": "foro", "tribunale": "foro", "causa": "foro",
-            "auto di cortesia": "auto_sostitutiva", "macchina sostitutiva": "auto_sostitutiva",
-            "restituire": "restituzione", "consegnare": "restituzione", "fine": "restituzione"
-        }
-
-        for chiave, categoria in mappa_concetti.items():
-            if chiave in testo_domanda:
-                res = regole.get(categoria)
-                if res:
-                    st.subheader("📌 Ragionamento dell'Assistente")
-                    
-                    # Risposta discorsiva
-                    st.write(f"In base al contratto **{societa}**, la risposta è contenuta nell'**Articolo {res['art']}**.")
-                    
-                    st.info(f"**Cosa dice il contratto:** {res['testo']}")
-                    
-                    st.markdown("### 💬 Suggerimento per il cliente:")
-                    if categoria == "conduzione":
-                        st.success(f"Dì al cliente che può guidare nei paesi UE, ma deve sempre controllare la Carta Verde. Se esce dall'UE, serve l'autorizzazione di {societa} o rischia la rivalsa totale.")
-                    elif categoria == "sinistri":
-                        st.success(f"Attenzione! Ricorda al cliente che ha solo 48 ore (Arval) o 24 ore (Alphabet). Se non ci manda il CAI firmato, gli addebiteremo l'intero costo del danno anche se ha la Kasko.")
-                    elif categoria == "foro":
-                        st.success(f"Se il cliente minaccia azioni legali, fagli presente che per contratto il Foro competente è esclusivamente quello di Firenze (Arval) o Roma (Alphabet).")
-                    else:
-                        st.success("Spiega al cliente che queste sono le condizioni generali firmate in fase di contratto e non sono derogabili.")
-                    
-                    trovato = True
-                    break
-        
-        if not trovato:
-            st.warning("Non ho trovato un articolo specifico per questa domanda. Prova a usare parole come 'sinistro', 'estero', 'recesso' o 'manutenzione'.")
+        with st.expander("Leggi il testo tecnico del contratto"):
+            st.write(res['spiegazione'])
+            
+        st.markdown("### 🗣️ Cosa rispondere al cliente:")
+        st.success(res['consiglio'])
+    else:
+        st.warning("Capisco la domanda, ma non trovo una clausola specifica nel database per questo caso. Prova a usare parole più dirette (es: 'sinistro', 'estero', 'penale').")
 
 st.divider()
-st.caption("AI aggiornata con i PDF Arval B2B (Art. 1-25) e regole generali Alphabet/Leasys.")
+st.caption("Sistema basato sui PDF ufficiali 2026.")
