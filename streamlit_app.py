@@ -1,65 +1,67 @@
- import streamlit as st
+import streamlit as st
 from database import DATA
 
-st.set_page_config(page_title="AI Legal Advisor NLT", layout="wide")
+st.set_page_config(page_title="AI NLT Master Advisor", layout="centered")
 
-st.title("🤖 Assistente NLT: Ragionamento Contrattuale")
-st.markdown("---")
+st.title("🤖 Assistente NLT Intelligente")
+st.markdown("Chiedi aiuto per gestire le richieste dei clienti e le clausole contrattuali.")
 
-# Selezione Contesto
+# Scelta della società e contesto
 col1, col2 = st.columns(2)
 with col1:
-    soc = st.selectbox("Seleziona la Società", list(DATA.keys()))
+    soc = st.selectbox("Società del contratto:", sorted(list(DATA.keys())))
 with col2:
-    tipo = st.radio("Tipo di Cliente", ["Azienda (B2B)", "Privato (B2C)"], horizontal=True)
+    tipo_cliente = st.radio("Tipo cliente:", ["Azienda (B2B)", "Privato (B2C)"], horizontal=True)
 
-# Input Discorsivo
-domanda = st.text_input("Cosa ti sta chiedendo il cliente? (es: 'Posso andare in Svizzera?' o 'Ho perso le chiavi')")
+# Input discorsivo della collega
+domanda = st.text_input("Cosa ti chiede il cliente? (es: 'Può andare all'estero?' o 'Chi paga i danni?')")
 
 if domanda:
-    d = domanda.lower()
-    st.write("### 🔎 Analisi dell'Assistente Virtuale")
+    q = domanda.lower()
+    st.divider()
     
-    # Logica di ragionamento discorsivo
-    # Qui simuliamo il ragionamento dell'AI che cerca nel database
+    # Motore di ragionamento (Keyword Matching evoluto)
+    mappa = {
+        "estero": "estero", "svizzera": "estero", "francia": "estero", "viagg": "estero", "paesi": "estero",
+        "incidente": "sinistri", "sinistro": "sinistri", "cai": "sinistri", "danno": "sinistri", "colpa": "sinistri",
+        "chiudere": "recesso", "recedere": "recesso", "penale": "recesso", "disdetta": "recesso",
+        "officina": "manutenzione", "tagliando": "manutenzione", "olio": "manutenzione", "rottura": "manutenzione",
+        "avvocato": "foro", "tribunale": "foro", "causa": "foro", "legale": "foro",
+        "sostitutiva": "sostitutiva", "cortesia": "sostitutiva", "macchina": "sostitutiva",
+        "restituire": "restituzione", "fine": "restituzione", "chiavi": "restituzione", "pulizia": "restituzione"
+    }
+
+    categoria = None
+    for parola, cat in mappa.items():
+        if parola in q:
+            categoria = cat
+            break
+
+    # Sezione Risposta Discorsiva
+    if categoria and categoria in DATA[soc]["regole"]:
+        info = DATA[soc]["regole"][categoria]
+        
+        st.subheader("🧐 Ragionamento dell'Assistente")
+        st.write(f"In base al contratto **{soc}**, questa situazione è regolata dall'**Articolo {info['art']}**.")
+        
+        st.info(f"**Cosa dice il testo tecnico:** {info['testo']}")
+        
+        # Logica speciale per il Foro B2C
+        if categoria == "foro" and tipo_cliente == "Privato (B2C)":
+            st.warning("⚠️ **Attenzione:** Trattandosi di un PRIVATO, non vale il foro della società. Per legge (Codice del Consumo) il foro competente è quello di residenza del cliente.")
+        
+        st.markdown("### 🗣️ Cosa suggerire al cliente:")
+        st.success(info['consiglio'])
     
-    context = DATA[soc]["art_chiave"]
-    risposta = ""
-    consiglio = ""
-    articolo = ""
-
-    # Mappatura concettuale
-    if "estero" in d or "svizzera" in d or "francia" in d or "viagg" in d:
-        info = context.get("estero")
-        if info:
-            articolo = info['art']
-            risposta = f"Per quanto riguarda i viaggi all'estero, **{soc}** specifica che {info['regola']} {info['logica']}"
-            consiglio = "Controlla la Carta Verde: se il paese non è barrato, può andare. Se è sbarrato, deve fermarsi e chiederci l'autorizzazione o non avrà copertura assicurativa."
-
-    elif "incidente" in d or "sinistro" in d or "cai" in d or "danno" in d:
-        info = context.get("sinistri")
-        if info:
-            articolo = info['art']
-            risposta = f"In caso di incidente, la regola di **{soc}** è chiara: {info['regola']} {info['logica']}"
-            consiglio = f"Dì al cliente di inviare il CAI entro i termini ({'24h' if soc=='ALPHABET' else '48h'}). Se non c'è la firma della controparte, avvisalo che Arval/Alphabet gli addebiterà la franchigia piena come colpa sua."
-
-    elif "avvocato" in d or "foro" in d or "tribunale" in d or "causa" in d:
-        if tipo == "Azienda (B2B)":
-            foro = DATA[soc]["foro_b2b"]
-            articolo = "Articolo finale (Foro)"
-            risposta = f"Trattandosi di un contratto B2B con **{soc}**, il foro competente è esclusivamente quello di **{foro}**."
-            consiglio = f"Se l'avvocato del cliente scrive da un'altra città, fagli presente che la competenza è di {foro}. Spesso questo basta a farli desistere perché i costi di trasferta non convengono."
+    elif "totale" in q or "distrutta" in q:
+        if "sinistro_totale" in DATA[soc]["regole"]:
+            info = DATA[soc]["regole"]["sinistro_totale"]
+            st.success(f"Dì al cliente: {info['consiglio']}")
         else:
-            risposta = "Essendo un privato (B2C), prevale il Foro del Consumatore (residenza del cliente)."
-            consiglio = "Con i privati non possiamo imporre la sede della società. Dobbiamo essere più concilianti."
-
-    if risposta:
-        with st.chat_message("assistant"):
-            st.write(f"**Basandomi sull'Articolo {articolo} di {soc}:**")
-            st.write(risposta)
-            st.info(f"👉 **Suggerimento pratico per te:** {consiglio}")
+            st.write("Per questa società, i danni totali seguono la procedura sinistri standard (Art. 7 Arval).")
+            
     else:
-        st.warning("Non ho trovato una clausola specifica. Prova a scrivermi parole chiave come 'estero', 'sinistro', 'chiavi' o 'foro'.")
+        st.warning("Non trovo una clausola specifica. Prova a usare parole come: 'sinistro', 'estero', 'foro', 'recesso' o 'manutenzione'.")
 
 st.divider()
-st.caption("Sistema di supporto decisionale interno basato sui PDF Arval, Alphabet e Leasys 2026.")
+st.caption("Aggiornato Febbraio 2026. Basato su CGC Arval B2B (Art. 1-25) e Standard di mercato Alphabet/Leasys/Ayvens/Santander.")
