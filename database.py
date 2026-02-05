@@ -1,26 +1,30 @@
 DATA = {
     "ARVAL": {
-        "B2B (Aziende)": {
-            "estero": {"art": "18", "spiegazione": "Circolazione ammessa in UE e Carta Verde. Extra-UE serve delega.", "consiglio": "Dì al cliente: 'Può andare in UE, ma per paesi sbarrati sulla Carta Verde serve una delega Arval che richiede tempo e costi extra. Non parta senza.'"},
-            "sinistri": {"art": "11", "spiegazione": "Denuncia entro 48h. Obbligo CAI firmato o verbale.", "consiglio": "Dì al cliente: 'Senza il modulo CAI firmato dalla controparte, Arval le addebiterà l'intero danno anche se ha ragione. È fondamentale la firma.'"},
-            "foro": {"art": "25", "spiegazione": "Competenza esclusiva del Foro di Firenze.", "consiglio": "Se minaccia azioni legali: 'Le ricordo che per contratto ogni controversia va discussa al Tribunale di Firenze. Questo di solito raffredda gli animi.'"},
-            "tagliando": {"art": "8", "spiegazione": "Manutenzione solo in Arval Center. Incuria a carico cliente.", "consiglio": "Se ha rotto il motore: 'Il contratto (Art. 8) la obbliga a controllare i livelli. Se non lo ha fatto, Arval non coprirà la riparazione.'"}
-        },
-        "B2C (Privati)": {
-            "recesso": {"art": "14", "spiegazione": "Diritto di ripensamento entro 14gg (Codice Consumo).", "consiglio": "Dì al cliente: 'Se ha firmato da meno di 14 giorni, può recedere senza penali. Oltre questa data, si applicano le tabelle parametriche.'"},
-            "foro": {"art": "25", "spiegazione": "Foro del Consumatore (residenza del cliente).", "consiglio": "Attenzione: con i privati non possiamo imporre Firenze. La causa si farebbe nella loro città."}
+        "identità": "Arval - Gruppo BNP Paribas",
+        "foro_b2b": "Firenze",
+        "art_chiave": {
+            "sinistri": {"art": "7 e 11", "regola": "Denuncia entro 48h. Obbligo CAI firmato.", "logica": "Se manca la firma della controparte, Arval presume la colpa del cliente e addebita tutto."},
+            "estero": {"art": "18.1", "regola": "UE e Carta Verde ok. Extra-UE serve delega.", "logica": "Verificare se il paese è barrato sulla carta verde. Se sì, il cliente non deve partire senza autorizzazione scritta."},
+            "recesso": {"art": "14", "regola": "Preavviso 60gg. Penale 35% canoni residui.", "logica": "Oltre alla penale, scatta il conguaglio km. Se ha fatto troppi km, la penale raddoppia nei fatti."},
+            "bollo": {"art": "5", "regola": "Gestito da Arval.", "logica": "Il cliente non deve fare nulla, Arval paga e (se previsto) riaddebita in fattura."},
+            "manutenzione": {"art": "8", "regola": "Solo Arval Center. Obbligo controllo livelli.", "logica": "Se il motore fonde per mancanza olio, Arval addebita l'intero costo perché è 'omessa custodia'."}
         }
     },
     "ALPHABET": {
-        "B2B (Aziende)": {
-            "sinistri": {"art": "8.2", "spiegazione": "Denuncia entro 24 ORE. Penale ritardo € 150,00.", "consiglio": "Dì al cliente: 'Alphabet è rigidissima. Se non denuncia entro 24 ore esatte, le addebiteranno 150€ di penale fissa.'"},
-            "smarrimento": {"art": "9.1", "spiegazione": "Smarrimento libretto € 100,00 + IVA.", "consiglio": "Dì al cliente: 'La perdita dei documenti non è solo un fastidio, ha un costo contrattuale di 100€ più IVA.'"}
+        "identità": "Alphabet - Gruppo BMW",
+        "foro_b2b": "Roma",
+        "art_chiave": {
+            "sinistri": {"art": "8.2", "regola": "Denuncia TASSATIVA entro 24 ore.", "logica": "Alphabet applica una penale di 150€ anche solo per un'ora di ritardo nella denuncia."},
+            "documenti": {"art": "9.1", "regola": "Smarrimento libretto costa 100€ + IVA.", "logica": "È un onere amministrativo fisso, non trattabile."},
+            "estero": {"art": "4.2", "regola": "Serve delega per alcuni paesi extra-UE.", "logica": "La delega Alphabet costa circa 25€ e va chiesta con largo anticipo."}
         }
     },
     "LEASYS": {
-        "B2B (Aziende)": {
-            "totale": {"art": "16.4", "spiegazione": "Auto irreparabile con colpa: penali pesantissime.", "consiglio": "Dì al cliente: 'Se l'auto è distrutta per sua colpa, dovrà pagare penali di estinzione e canoni residui. È un esborso di migliaia di euro.'"},
-            "chiavi": {"art": "15", "spiegazione": "Obbligo 2 chiavi entro 48h dal furto o addebito valore auto.", "consiglio": "Chiedi subito: 'Ha entrambe le chiavi?'. Se ne manca una, il cliente rischia di pagare l'intero valore del veicolo."}
+        "identità": "Leasys - Stellantis/Crédit Agricole",
+        "foro_b2b": "Roma",
+        "art_chiave": {
+            "sinistro_totale": {"art": "16.4", "regola": "Penali pesantissime per irreparabilità con colpa.", "logica": "Il cliente paga canoni residui, penale estinzione e spesso la differenza valore a nuovo."},
+            "chiavi": {"art": "15", "regola": "Furto? Servono 2 chiavi originali entro 48h.", "logica": "Se il cliente ha perso una chiave mesi fa e non ha fatto denuncia allora, oggi paga l'intera auto."}
         }
     }
 }
