@@ -1,59 +1,59 @@
- import streamlit as st
+import streamlit as st
 from database import DATA
 
 st.set_page_config(page_title="AI NLT Advisor PRO", layout="centered")
 
 st.title("🤖 AI Assistente Contratti NLT")
-st.markdown("Chiedi aiuto per gestire i clienti e le clausole delle 5 società principali.")
+st.markdown("Chiedi aiuto per gestire i clienti e le clausole delle società di noleggio.")
 
 # Selezione Contesto
 col1, col2 = st.columns(2)
 with col1:
-    soc = st.selectbox("Società:", sorted(list(DATA.keys())))
+    soc = st.selectbox("Società del contratto:", sorted(list(DATA.keys())))
 with col2:
-    tipo = st.selectbox("Tipo Cliente:", sorted(list(DATA[soc].keys())))
+    tipo = st.selectbox("Tipo cliente:", sorted(list(DATA[soc].keys())))
 
-# Input Discorsivo
-domanda = st.text_input("Cosa ti sta chiedendo il cliente o la collega? (es: 'Può andare all'estero?')")
+# Input discorsivo (Ragionamento AI)
+domanda = st.text_input("Cosa ti chiede il cliente? (es: 'Può andare in Svizzera?' o 'Chi paga i danni?')")
 
 if domanda:
     q = domanda.lower()
     st.divider()
     
-    # Motore di ragionamento (Mappatura Intenti)
-    intento = None
-    if any(x in q for x in ["estero", "svizzera", "viaggio", "fuori"]): intento = "estero"
-    elif any(x in q for x in ["incidente", "sinistro", "cai", "danno", "colpa"]): intento = "sinistri"
-    elif any(x in q for x in ["tagliando", "officina", "olio", "manutenz"]): intento = "manutenzione"
-    elif any(x in q for x in ["chiudere", "recedere", "penale", "ripensamento"]): intento = "recesso"
-    elif any(x in q for x in ["avvocato", "foro", "tribunale", "causa"]): intento = "foro"
-    elif any(x in q for x in ["macchina", "cortesia", "sostitutiva"]): intento = "sostitutiva"
-    elif any(x in q for x in ["restituire", "consegnare", "chiavi", "fine"]): intento = "restituzione"
+    # Motore di interpretazione concettuale
+    mappa = {
+        "estero": "estero", "viagg": "estero", "paesi": "estero", "svizzera": "estero",
+        "incidente": "sinistri", "sinistro": "sinistri", "cai": "sinistri", "danni": "sinistri",
+        "prezz": "canone_var", "canone": "canone_var", "ritard": "canone_var",
+        "tagliand": "manutenzione", "officina": "manutenzione", "olio": "manutenzione",
+        "recedere": "recesso", "chiudere": "recesso", "penale": "recesso",
+        "avvocato": "foro", "tribunale": "foro", "causa": "foro", "legal": "foro",
+        "sostitutiva": "auto_sostitutiva", "cortesia": "auto_sostitutiva",
+        "restituire": "restituzione", "consegnare": "restituzione", "chiavi": "restituzione"
+    }
 
-    # Ricerca nel Database
-    regole = DATA[soc][tipo]
-    risorsa = None
-    
-    # Trova la regola corrispondente o affine
-    for k in regole.keys():
-        if intento and intento in k:
-            risorsa = regole[k]
+    categoria = None
+    for parola, cat in mappa.items():
+        if parola in q:
+            categoria = cat
             break
 
-    if risorsa:
+    # Visualizzazione Risposta Discorsiva
+    regole = DATA[soc][tipo]["regole"]
+    
+    if categoria and categoria in regole:
+        info = regole[categoria]
         with st.chat_message("assistant"):
-            st.markdown(f"### 🧐 Ragionamento per la Collega")
-            st.write(f"In base al contratto **{soc}**, stiamo parlando dell'**Articolo {risorsa['art']}**.")
+            st.markdown(f"### 🧐 Analisi per la Collega")
+            st.write(f"In merito alla tua domanda su **{soc}**, la risposta si trova nell'**Articolo {info['art']}**.")
             
-            st.info(f"**Cosa dice il contratto:** {risorsa['testo']}")
+            st.markdown("---")
+            st.write(f"**Cosa dice il contratto:** {info['testo']}")
             
-            st.markdown("### 🗣️ Suggerimento per il Cliente")
-            st.success(risorsa['consiglio'])
-            
-            if soc == "ARVAL" and "foro" in q and tipo == "Aziende (B2B)":
-                st.warning("Nota: Ricordati che l'Art. 25 stabilisce Firenze come foro esclusivo. È un'arma forte contro gli avvocati.")
+            st.markdown("### 🗣️ Cosa rispondere al cliente")
+            st.success(info['ragionamento'])
     else:
-        st.warning("Non trovo un articolo specifico per questa domanda. Prova con parole più dirette (es: 'sinistro', 'estero', 'foro', 'recesso').")
+        st.warning("Capisco la domanda, ma non trovo una clausola specifica. Prova a usare parole come 'sinistro', 'estero', 'recesso' o 'foro'.")
 
 st.divider()
-st.caption("Sistema basato sui PDF ufficiali 2026. Consultare sempre le CGC cartacee per i dettagli dell'ordine.")
+st.caption("Aggiornato 2026. Basato su CGC Arval B2B (Art. 1-25) e Standard Alphabet/Leasys.")
