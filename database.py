@@ -1,30 +1,40 @@
 DATA = {
     "ARVAL": {
-        "identità": "Arval - Gruppo BNP Paribas",
-        "foro_b2b": "Firenze",
-        "art_chiave": {
-            "sinistri": {"art": "7 e 11", "regola": "Denuncia entro 48h. Obbligo CAI firmato.", "logica": "Se manca la firma della controparte, Arval presume la colpa del cliente e addebita tutto."},
-            "estero": {"art": "18.1", "regola": "UE e Carta Verde ok. Extra-UE serve delega.", "logica": "Verificare se il paese è barrato sulla carta verde. Se sì, il cliente non deve partire senza autorizzazione scritta."},
-            "recesso": {"art": "14", "regola": "Preavviso 60gg. Penale 35% canoni residui.", "logica": "Oltre alla penale, scatta il conguaglio km. Se ha fatto troppi km, la penale raddoppia nei fatti."},
-            "bollo": {"art": "5", "regola": "Gestito da Arval.", "logica": "Il cliente non deve fare nulla, Arval paga e (se previsto) riaddebita in fattura."},
-            "manutenzione": {"art": "8", "regola": "Solo Arval Center. Obbligo controllo livelli.", "logica": "Se il motore fonde per mancanza olio, Arval addebita l'intero costo perché è 'omessa custodia'."}
+        "tipo": "B2B/B2C",
+        "regole": {
+            "estero": {"art": "18.1", "testo": "Circolazione ammessa in UE e paesi Carta Verde non sbarrati. Per extra-UE serve delega scritta.", "consiglio": "Controlla la Carta Verde: se il paese è sbarrato, il cliente deve chiedere la delega ad Arval. Non farlo partire senza, o non avrà copertura."},
+            "sinistri": {"art": "7 e 11", "testo": "Denuncia entro 48h. Obbligatorio CAI firmato. La limitazione di responsabilità decade per colpa grave.", "consiglio": "Se non c'è la firma della controparte, Arval addebiterà tutto al cliente. Digli chiaramente che il CAI deve essere completo."},
+            "recesso": {"art": "14", "testo": "Penale 35% canoni residui + conguaglio chilometrico pro-rata.", "consiglio": "Spiega al cliente che il recesso non è solo la penale, ma anche il ricalcolo dei km fatti: se è fuori soglia, il costo sale molto."},
+            "manutenzione": {"art": "8", "testo": "Obbligo Arval Center. Il cliente risponde dei danni da incuria (olio/liquidi).", "consiglio": "Se ha fuso il motore per mancanza olio, Arval non paga. È responsabilità del cliente controllare i livelli."},
+            "foro": {"art": "25", "testo": "B2B: Foro esclusivo Firenze. B2C: Foro di residenza del cliente.", "consiglio": "Per le aziende, cita Firenze: spesso l'avvocato del cliente desiste perché non vuole spostarsi."},
+            "sostitutiva": {"art": "10", "testo": "Solo per fermi > 8h lavorative e se inclusa in ordine.", "consiglio": "Se l'auto è ferma solo per un tagliando veloce, digli che da contratto non ne ha diritto."},
+            "restituzione": {"art": "16", "testo": "Resa con 2 chiavi e documenti. Danni fuori norma addebitati secondo Manuale Stato d'Uso.", "consiglio": "Consigliagli un lavaggio professionale prima della resa, o il perito segnerà danni 'con riserva' e gli addebiteranno tutto."}
         }
     },
     "ALPHABET": {
-        "identità": "Alphabet - Gruppo BMW",
-        "foro_b2b": "Roma",
-        "art_chiave": {
-            "sinistri": {"art": "8.2", "regola": "Denuncia TASSATIVA entro 24 ore.", "logica": "Alphabet applica una penale di 150€ anche solo per un'ora di ritardo nella denuncia."},
-            "documenti": {"art": "9.1", "regola": "Smarrimento libretto costa 100€ + IVA.", "logica": "È un onere amministrativo fisso, non trattabile."},
-            "estero": {"art": "4.2", "regola": "Serve delega per alcuni paesi extra-UE.", "logica": "La delega Alphabet costa circa 25€ e va chiesta con largo anticipo."}
+        "tipo": "B2B",
+        "regole": {
+            "sinistri": {"art": "8.2", "testo": "Denuncia entro 24 ORE. Penale ritardo € 150,00.", "consiglio": "Dì al cliente che Alphabet è fiscale: se denuncia il giorno dopo, la penale di 150€ scatta in automatico in fattura."},
+            "estero": {"art": "4.2", "testo": "Circolazione UE ok. Extra-UE serve delega Alphabet (€ 25,00 + IVA).", "consiglio": "Avvisalo che la delega costa 25€ e serve una settimana per averla."},
+            "foro": {"art": "16", "testo": "Foro esclusivo Roma.", "consiglio": "Ogni contenzioso legale con Alphabet deve essere discusso a Roma."}
         }
     },
     "LEASYS": {
-        "identità": "Leasys - Stellantis/Crédit Agricole",
-        "foro_b2b": "Roma",
-        "art_chiave": {
-            "sinistro_totale": {"art": "16.4", "regola": "Penali pesantissime per irreparabilità con colpa.", "logica": "Il cliente paga canoni residui, penale estinzione e spesso la differenza valore a nuovo."},
-            "chiavi": {"art": "15", "regola": "Furto? Servono 2 chiavi originali entro 48h.", "logica": "Se il cliente ha perso una chiave mesi fa e non ha fatto denuncia allora, oggi paga l'intera auto."}
+        "tipo": "B2B",
+        "regole": {
+            "sinistro_totale": {"art": "16.4", "testo": "Penale estinzione + 2 canoni + valore a nuovo se auto < 6 mesi.", "consiglio": "Se l'auto è distrutta con colpa, il cliente riceverà un addebito pesantissimo. Preparalo subito all'idea."},
+            "chiavi": {"art": "15", "testo": "Consegna 2 chiavi entro 48h dal furto o addebito valore intero auto.", "consiglio": "Se non ha la seconda chiave, digli di cercarla disperatamente o Arval/Leasys gli chiederà il valore dell'auto."},
+            "foro": {"art": "26", "testo": "Foro esclusivo Roma.", "consiglio": "Il tribunale di riferimento è quello di Roma."}
         }
-    }
-}
+    },
+    "AYVENS": {
+        "tipo": "B2B",
+        "regole": {
+            "penale_sinistro": {"art": "11", "testo": "Spesa fissa apertura pratica € 150,00 + IVA a sinistro.", "consiglio": "Ricordagli che oltre alla franchigia, Ayvens si prende 150€ fissi per la burocrazia del sinistro."},
+            "conducenti": {"art": "4.3", "testo": "Guida permessa solo a dipendenti e familiari conviventi.", "consiglio": "Se alla guida c'era un amico, l'assicurazione decade e il cliente paga tutto di tasca sua."}
+        }
+    },
+    "SANTANDER": {
+        "tipo": "B2B/B2C",
+        "regole": {
+            "denuncia_pec": {"art": "14", "testo": "Obbligo invio denuncia via PEC entro 48h. La
